@@ -1,4 +1,4 @@
-package com.example.musicapp.models.adapter;
+package com.example.musicapp.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

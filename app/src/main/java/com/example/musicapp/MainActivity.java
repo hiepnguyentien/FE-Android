@@ -10,7 +10,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.example.musicapp.api.TrackService;
-import com.example.musicapp.models.adapter.TrackAdapter;
+import com.example.musicapp.adapter.TrackAdapter;
 import com.example.musicapp.models.track.Track;
 
 import java.util.ArrayList;
