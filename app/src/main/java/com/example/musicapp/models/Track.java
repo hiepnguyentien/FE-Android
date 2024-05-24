@@ -1,6 +1,6 @@
 package com.example.musicapp.models;
 
-public class track {
+public class Track {
     private String trackName;
     private String author;
 
