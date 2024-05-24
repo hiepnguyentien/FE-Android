@@ -1,8 +1,18 @@
-package com.example.musicapp.models;
+package com.example.musicapp.models.track;
 
-public class track {
+public class Track {
     private String trackName;
     private String author;
+    private String artWork;
+
+
+    public String getArtWork() {
+        return artWork;
+    }
+
+    public void setArtWork(String artWork) {
+        this.artWork = artWork;
+    }
 
     public String getTrackName() {
         return trackName;
