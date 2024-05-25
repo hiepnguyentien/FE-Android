@@ -1,14 +1,12 @@
-package com.example.musicapp;
+package com.example.musicapp.Avtivity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.Window;
 import android.widget.Toast;
 
+import com.example.musicapp.R;
 import com.example.musicapp.api.TrackService;
 import com.example.musicapp.adapter.TrackAdapter;
 import com.example.musicapp.models.track.Track;
