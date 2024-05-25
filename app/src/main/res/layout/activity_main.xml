@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Avtivity.MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_track"
-        app:spanCount="1"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

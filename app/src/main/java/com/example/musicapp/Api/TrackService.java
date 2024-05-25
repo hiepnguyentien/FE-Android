@@ -1,6 +1,6 @@
-package com.example.musicapp.api;
+package com.example.musicapp.Api;
 
-import com.example.musicapp.models.track.Track;
+import com.example.musicapp.Models.Track.Track;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

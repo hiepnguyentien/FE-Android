@@ -1,4 +1,4 @@
-package com.example.musicapp.models.track;
+package com.example.musicapp.Models.Track;
 
 public class Track {
     private String trackName;

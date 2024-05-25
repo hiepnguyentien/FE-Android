@@ -1,4 +1,4 @@
-package com.example.musicapp.Avtivity;
+package com.example.musicapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.musicapp.R;
-import com.example.musicapp.api.TrackService;
-import com.example.musicapp.adapter.TrackAdapter;
-import com.example.musicapp.models.track.Track;
+import com.example.musicapp.Api.TrackService;
+import com.example.musicapp.Adapter.TrackAdapter;
+import com.example.musicapp.Models.Track.Track;
 
 import java.util.ArrayList;
 import java.util.List;
