@@ -1,6 +1,7 @@
 package com.example.musicapp;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -25,7 +26,6 @@ public class RegisterActivity extends AppCompatActivity {
     Button btn_dangky;
     CheckBox cb_missme;
     RiveAnimationView rv_robot;
-
     AuthService authService = AuthService.authService;
 
     @Override
@@ -74,9 +74,9 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
                     AuthResponse authResponse = response.body();
                     if (response.isSuccessful() & authResponse.isSucceed()) {
-                        DialogUtil.showDialog(RegisterActivity.this, "Token", authResponse.getData());
                         rv_robot.fireState("robot_login_machine", "success");
-                        return;
+                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        finish();
                     } else {
                         DialogUtil.showDialog(RegisterActivity.this, "Error", response.toString());
                         rv_robot.fireState("robot_login_machine", "fail");

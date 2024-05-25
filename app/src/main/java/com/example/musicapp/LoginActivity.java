@@ -1,6 +1,9 @@
 package com.example.musicapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -25,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_dangnhap;
     CheckBox cb_missme;
     RiveAnimationView rv_robot;
-
     AuthService authService = AuthService.authService;
 
     @Override
@@ -66,10 +68,14 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
                     AuthResponse authResponse = response.body();
-                    if (response.isSuccessful() & authResponse.isSucceed()) {
-                        DialogUtil.showDialog(LoginActivity.this, "Token", authResponse.getData());
+                    if (response.isSuccessful() & authResponse.isSucceed() & authResponse != null) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("token", authResponse.getData());
+                        editor.apply();
                         rv_robot.fireState("robot_login_machine", "success");
-                        return;
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     } else {
                         DialogUtil.showDialog(LoginActivity.this, "Error", response.toString());
                         rv_robot.fireState("robot_login_machine", "fail");
