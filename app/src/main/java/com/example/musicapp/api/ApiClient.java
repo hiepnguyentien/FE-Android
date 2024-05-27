@@ -24,7 +24,7 @@ public class ApiClient {
                     .build();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.34:5271/comment/")  // Replace with your API base URL
+                    .baseUrl("http://192.168.1.34:5271/comment/")
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();

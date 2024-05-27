@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyMusicApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -40,6 +41,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".CommentActivity" />
         <activity android:name=".UserActivity" />
+        <activity android:name="ListeningActivity" />
+        <activity android:name=".ResetPWActivity" />
     </application>
 
 </manifest>

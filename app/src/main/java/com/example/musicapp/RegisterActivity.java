@@ -7,12 +7,13 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.musicapp.api.AuthService;
 import com.example.musicapp.models.AuthResponse;
-import com.example.musicapp.models.SignInModel;
+import com.example.musicapp.models.SignUpModel;
 import com.example.musicapp.util.DialogUtil;
 
 import app.rive.runtime.kotlin.RiveAnimationView;
@@ -23,8 +24,8 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText edt_username, edt_password, edt_email;
+    TextView tv_login;
     Button btn_dangky;
-    CheckBox cb_missme;
     RiveAnimationView rv_robot;
     AuthService authService = AuthService.authService;
 
@@ -37,8 +38,13 @@ public class RegisterActivity extends AppCompatActivity {
         edt_password = findViewById(R.id.edt_password);
         edt_email = findViewById(R.id.edt_email);
         btn_dangky = findViewById(R.id.btn_dangky);
-        cb_missme = findViewById(R.id.cb_missme);
         rv_robot = findViewById(R.id.rv_robot);
+        tv_login = findViewById(R.id.tv_dangnhap);
+
+        tv_login.setOnClickListener(v -> {
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            finish();
+        });
 
         edt_password.setOnFocusChangeListener((view, isFocus) -> {
             if(isFocus) {
@@ -68,14 +74,14 @@ public class RegisterActivity extends AppCompatActivity {
                 rv_robot.fireState("robot_login_machine", "fail");
                 return;
             }
-            SignInModel model = new SignInModel(username, password, cb_missme.isChecked());
+            SignUpModel model = new SignUpModel(username, email, password);
             authService.register(model).enqueue(new Callback<AuthResponse>() {
                 @Override
                 public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
                     AuthResponse authResponse = response.body();
                     if (response.isSuccessful() & authResponse.isSucceed()) {
                         rv_robot.fireState("robot_login_machine", "success");
-                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         finish();
                     } else {
                         DialogUtil.showDialog(RegisterActivity.this, "Error", response.toString());

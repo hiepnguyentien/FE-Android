@@ -3,6 +3,8 @@ package com.example.musicapp.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.musicapp.MyMusicApp;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -24,7 +26,12 @@ public class AuthInterceptor implements Interceptor {
         Request originalRequest = chain.request();
 
         // Retrieve the token from SharedPreferences
-        String token = sharedPreferences.getString("token", null);
+        String token;
+        if (sharedPreferences.getString("token", null) != null){
+            token = sharedPreferences.getString("token", null);
+        } else {
+            token = MyMusicApp.getAuthToken();
+        }
 
         // If there's no token, proceed with the original request
         if (token == null) {

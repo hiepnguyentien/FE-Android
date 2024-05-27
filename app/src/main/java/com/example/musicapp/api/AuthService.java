@@ -2,6 +2,7 @@ package com.example.musicapp.api;
 
 import com.example.musicapp.models.AuthResponse;
 import com.example.musicapp.models.SignInModel;
+import com.example.musicapp.models.SignUpModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -25,5 +26,5 @@ public interface AuthService {
     Call<AuthResponse> login(@Body SignInModel loginRequest);
 
     @POST("signup")
-    Call<AuthResponse> register(@Body SignInModel registerRequest);
+    Call<AuthResponse> register(@Body SignUpModel registerRequest);
 }

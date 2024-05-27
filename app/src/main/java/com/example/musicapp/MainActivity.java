@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.musicapp.api.TrackAdapter;
 import com.example.musicapp.api.TrackService;
 import com.example.musicapp.models.Track;
+import com.example.musicapp.util.DialogUtil;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -37,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rcvTrack.setLayoutManager(layoutManager);
-
         callApiGetTrack();
-
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -52,10 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
@@ -63,19 +60,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void openCommentActivity(int trackId) {
         Intent intent;
-        if (isLoggedIn()) {
-            intent = new Intent(MainActivity.this, CommentActivity.class);
-            intent.putExtra("track_id", trackId);
-        } else {
-            intent = new Intent(MainActivity.this, LoginActivity.class);
-        }
+        intent = new Intent(MainActivity.this, CommentActivity.class);
+        intent.putExtra("track_id", trackId);
         startActivity(intent);
     }
 
     private boolean isLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String token = sharedPreferences.getString("token", null);
-        return token != null;
+        if (token != null || MyMusicApp.getAuthToken() != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void callApiGetTrack(){

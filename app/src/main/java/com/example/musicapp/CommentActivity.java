@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.example.musicapp.api.ApiClient;
 import com.example.musicapp.api.CmtAdapter;
 import com.example.musicapp.api.CommentService;
 import com.example.musicapp.models.CommentResponse;
+import com.example.musicapp.util.DialogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +46,18 @@ public class CommentActivity extends AppCompatActivity {
         if (isLoggedIn()) {
             fetchCommentsForTrack();
         } else {
-            Toast.makeText(this, "Please login to view comments", Toast.LENGTH_SHORT).show();
+            DialogUtil.showDialog(this, "haven't login?", "please login to view comments");
         }
     }
 
     private boolean isLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String token = sharedPreferences.getString("token", null);
-        return token != null;
+        if (token != null || MyMusicApp.getAuthToken() != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void fetchCommentsForTrack() {

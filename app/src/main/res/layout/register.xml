@@ -33,30 +33,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_robot" />
 
-    <CheckBox
-        android:id="@+id/cb_missme"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="181dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="80dp"
-        android:text="Remember me!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_password" />
-
     <Button
         android:id="@+id/btn_dangky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="164dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="156dp"
         android:text="Dang ky"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_missme" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_password" />
 
     <EditText
         android:id="@+id/edt_email"
@@ -87,6 +74,19 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+
+    <TextView
+        android:id="@+id/tv_dangnhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="119dp"
+        android:text="da co tai khoan? dang nhap!"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_dangky" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

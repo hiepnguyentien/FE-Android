@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
     EditText edt_username, edt_password;
     Button btn_dangnhap;
     CheckBox cb_missme;
+    TextView tv_dangky;
     RiveAnimationView rv_robot;
     AuthService authService = AuthService.authService;
 
@@ -40,10 +41,17 @@ public class LoginActivity extends AppCompatActivity {
         btn_dangnhap = findViewById(R.id.btn_dangnhap);
         cb_missme = findViewById(R.id.cb_missme);
         rv_robot = findViewById(R.id.rv_robot);
+        tv_dangky = findViewById(R.id.tv_dangky);
+
+        tv_dangky.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         edt_password.setOnFocusChangeListener((view, isFocus) -> {
-            if(isFocus) {
-            rv_robot.setBooleanState("robot_login_machine", "is_hands_up", true);
+            if (isFocus) {
+                rv_robot.setBooleanState("robot_login_machine", "is_hands_up", true);
             } else {
                 rv_robot.setBooleanState("robot_login_machine", "is_hands_up", false);
             }
@@ -68,10 +76,14 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
                     AuthResponse authResponse = response.body();
-                    if (response.isSuccessful() & authResponse.isSucceed() & authResponse != null) {
+                    if (response.isSuccessful() && authResponse != null && authResponse.isSucceed()) {
                         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("token", authResponse.getData());
+                        if (cb_missme.isChecked()) {
+                            editor.putString("token", authResponse.getData());
+                        }else {
+                            MyMusicApp.setAuthToken(authResponse.getData());
+                        }
                         editor.apply();
                         rv_robot.fireState("robot_login_machine", "success");
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
