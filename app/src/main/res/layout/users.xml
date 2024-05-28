@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/blue"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/blue"
+        app:tabTextColor="@color/black"
+        app:tabIndicatorHeight="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_layout_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_layout_playlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Playlist" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_layout_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_layout_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <TextView
+        android:id="@+id/tv_dang_xuat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginEnd="178dp"
+        android:layout_marginBottom="50dp"
+        android:text="Dang Xuat"
+        app:layout_constraintBottom_toTopOf="@+id/tab_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/edt_uName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="58dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/uName"
+        app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="19dp"
+        android:text="Full name:"
+        app:layout_constraintEnd_toStartOf="@+id/edt_fullName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="49dp"
+        android:text="Email:"
+        app:layout_constraintBottom_toTopOf="@+id/fullName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNo" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="58dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/edt_phoneNo" />
+
+    <EditText
+        android:id="@+id/edt_phoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/edt_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_uName" />
+
+    <TextView
+        android:id="@+id/phoneNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="18dp"
+        android:text="Phone Number:"
+        app:layout_constraintEnd_toStartOf="@+id/edt_phoneNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uName" />
+
+    <TextView
+        android:id="@+id/uName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="42dp"
+        android:text="Username:"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+    <EditText
+        android:id="@+id/edt_fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="47dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="58dp"
+        android:text="Update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_fullName" />
+
+    <TextView
+        android:id="@+id/doimk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="57dp"
+        android:text="Đổi mât khẩu"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
