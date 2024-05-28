@@ -14,12 +14,12 @@ import retrofit2.http.GET;
 public interface TrackService {
 
     //http://localhost:5271/track/all
-    Gson gson = new GsonBuilder()
+    Gson gson = new GsonBuilder()   
             .setLenient()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     TrackService trackService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.10:5271/track/")
+            .baseUrl("http://192.168.1.2:5271/track/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(TrackService.class);
