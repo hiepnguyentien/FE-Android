@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.musicapp.api.ApiClient;
 import com.example.musicapp.api.AuthService;
+import com.example.musicapp.api.UserService;
 import com.example.musicapp.models.AuthResponse;
 import com.example.musicapp.models.SignUpModel;
 import com.example.musicapp.util.DialogUtil;

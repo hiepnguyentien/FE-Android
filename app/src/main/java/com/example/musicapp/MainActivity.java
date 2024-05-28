@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicapp.api.ApiClient;
 import com.example.musicapp.api.TrackAdapter;
 import com.example.musicapp.api.TrackService;
+import com.example.musicapp.api.UserService;
 import com.example.musicapp.models.Track;
+import com.example.musicapp.models.UserResponse;
 import com.example.musicapp.util.DialogUtil;
 import com.google.android.material.tabs.TabLayout;
 

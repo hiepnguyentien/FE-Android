@@ -13,10 +13,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.musicapp.api.ApiClient;
 import com.example.musicapp.api.AuthService;
+import com.example.musicapp.api.UserService;
 import com.example.musicapp.models.AuthResponse;
 import com.example.musicapp.models.SignInModel;
+import com.example.musicapp.models.UserResponse;
 import com.example.musicapp.util.DialogUtil;
+
+import java.util.List;
 
 import app.rive.runtime.kotlin.RiveAnimationView;
 import retrofit2.Call;
