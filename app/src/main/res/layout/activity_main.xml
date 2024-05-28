@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_track"
@@ -36,12 +36,15 @@
             android:text="Home" />
 
         <com.google.android.material.tabs.TabItem
+<<<<<<< HEAD
+=======
             android:id="@+id/tab_layout_playlist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Playlist" />
 
         <com.google.android.material.tabs.TabItem
+>>>>>>> tu
             android:id="@+id/tab_layout_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,5 +56,14 @@
             android:layout_height="wrap_content"
             android:text="User" />
     </com.google.android.material.tabs.TabLayout>
+<<<<<<< HEAD
+
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/view_pager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@id/tab_layout"/>-->
+=======
+>>>>>>> tu
 
 </androidx.constraintlayout.widget.ConstraintLayout>
