@@ -2,6 +2,16 @@ package com.example.musicapp.Models.Track;
 
 public class Track {
     private String trackName;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String author;
     private String artWork;
 

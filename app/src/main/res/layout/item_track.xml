@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    tools:context=".Activity.MainActivity">
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/iv_artwork"
@@ -52,7 +52,11 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
+<<<<<<< HEAD
         android:id="@+id/imageButton"
+=======
+        android:id="@+id/media_play"
+>>>>>>> tu
         android:layout_width="42dp"
         android:layout_height="40dp"
         android:background="@drawable/circle_button_background"
