@@ -52,11 +52,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-<<<<<<< HEAD
         android:id="@+id/imageButton"
-=======
-        android:id="@+id/media_play"
->>>>>>> tu
         android:layout_width="42dp"
         android:layout_height="40dp"
         android:background="@drawable/circle_button_background"
