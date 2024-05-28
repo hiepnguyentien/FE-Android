@@ -10,10 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicapp.Models.Track.Track;
 import com.example.musicapp.api.TrackAdapter;
-import com.example.musicapp.api.TrackService;
-import com.example.musicapp.models.Track;
-import com.example.musicapp.util.DialogUtil;
+import com.example.musicapp.Api.TrackServices;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void callApiGetTrack(){
-        TrackService.trackService.getListTrack().enqueue(new Callback<List<Track>>() {
+        TrackServices.TrackServices.getListTrack().enqueue(new Callback<List<Track>>() {
             @Override
             public void onResponse(Call<List<Track>> call, Response<List<Track>> response) {
                 if (response.isSuccessful()) {

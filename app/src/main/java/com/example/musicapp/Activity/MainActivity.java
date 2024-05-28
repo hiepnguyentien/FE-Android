@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.musicapp.R;
-import com.example.musicapp.Api.TrackService;
+import com.example.musicapp.Api.TrackServices;
 import com.example.musicapp.Adapter.TrackAdapter;
 import com.example.musicapp.Models.Track.Track;
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void callApiGetTrack(){
-        TrackService.trackService.getListTrack().enqueue(new Callback<List<Track>>() {
+        TrackServices.TrackServices.getListTrack().enqueue(new Callback<List<Track>>() {
             @Override
             public void onResponse(Call<List<Track>> call, Response<List<Track>> response) {
                 mListTrack = response.body();
