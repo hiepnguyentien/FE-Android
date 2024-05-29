@@ -17,7 +17,7 @@ public interface AuthService {
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
             .create();
     AuthService authService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.34:5271/auth/")
+            .baseUrl("http://172.16.10.30:5271/auth/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(AuthService.class);

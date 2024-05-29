@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicapp.api.ApiClient;
 import com.example.musicapp.api.TrackAdapter;
 import com.example.musicapp.api.TrackService;
+import com.example.musicapp.api.UserService;
 import com.example.musicapp.models.Track;
+import com.example.musicapp.models.UserResponse;
 import com.example.musicapp.util.DialogUtil;
 import com.google.android.material.tabs.TabLayout;
 
@@ -58,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void openCommentActivity(int trackId) {
+    private void openListeningActivity(int trackId) {
         Intent intent;
-        intent = new Intent(MainActivity.this, CommentActivity.class);
+        intent = new Intent(MainActivity.this, ListeningActivity.class);
         intent.putExtra("track_id", trackId);
         startActivity(intent);
     }
@@ -81,13 +84,13 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Track>> call, Response<List<Track>> response) {
                 if (response.isSuccessful()) {
                     mListTrack = response.body();
-                    TrackAdapter trackAdapter = new TrackAdapter(mListTrack);
+                    TrackAdapter trackAdapter = new TrackAdapter(MainActivity.this ,mListTrack);
                     trackAdapter.setOnItemClickListener(new TrackAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
                             Track selectedTrack = mListTrack.get(position);
                             int trackId = selectedTrack.getId();
-                            openCommentActivity(trackId);
+                            openListeningActivity(trackId);
                         }
                     });
                     rcvTrack.setAdapter(trackAdapter);

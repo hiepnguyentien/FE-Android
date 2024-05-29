@@ -1,6 +1,8 @@
 package com.example.musicapp.models;
 
-public class Track {
+import java.io.Serializable;
+
+public class Track implements Serializable {
     private String trackName;
     private int id;
 
@@ -14,6 +16,16 @@ public class Track {
 
     private String author;
     private String artWork;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    private String fileName;
 
 
     public String getArtWork() {
