@@ -16,6 +16,24 @@ public class Track implements Serializable {
 
     private String author;
     private String artWork;
+    private String description;
+    private boolean isPrivate;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
 
     public String getFileName() {
         return fileName;

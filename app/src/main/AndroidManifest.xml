@@ -43,6 +43,7 @@
         <activity android:name=".UserActivity" />
         <activity android:name="ListeningActivity" />
         <activity android:name=".ResetPWActivity" />
+        <activity android:name=".UploadTrackActivity" />
     </application>
 
 </manifest>

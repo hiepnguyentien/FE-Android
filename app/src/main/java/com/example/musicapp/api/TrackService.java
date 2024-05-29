@@ -11,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface TrackService {
@@ -21,7 +22,7 @@ public interface TrackService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     TrackService trackService = new Retrofit.Builder()
-            .baseUrl("http://172.16.10.30:5271/track/")
+            .baseUrl("http://192.168.1.34:5271/track/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(TrackService.class);
@@ -30,4 +31,7 @@ public interface TrackService {
 
     @GET("{id}")
     Call<Track> getTrackById(@Path("id") int id);
+
+    @POST("track")
+    Call<Track> addTrack(Track track);
 }

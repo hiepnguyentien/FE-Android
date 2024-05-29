@@ -251,7 +251,7 @@ public class ListeningActivity extends AppCompatActivity {
     }
 
     private void playTrack(Track track) {
-        String trackUrl = "http://172.16.10.30:5271/track/media/" + track.getFileName();
+        String trackUrl = "http://192.168.1.34:5271/track/media/" + track.getFileName();
 
         // Reset the media player before setting a new data source
         if (mediaPlayer != null) {

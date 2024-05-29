@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,14 +32,22 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rcvTrack;
     private List<Track> mListTrack;
+    private ImageView iv_addT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
 
         rcvTrack = findViewById(R.id.rcv_track);
         mListTrack = new ArrayList<>();
+        iv_addT = findViewById(R.id.iv_addTrack);
+
+        iv_addT.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, UploadTrackActivity.class);
+            startActivity(intent);
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rcvTrack.setLayoutManager(layoutManager);
