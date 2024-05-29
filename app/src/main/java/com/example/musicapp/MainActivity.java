@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-
     private void callApiGetTrack(){
         TrackService.trackService.getListTrack().enqueue(new Callback<List<Track>>() {
             @Override

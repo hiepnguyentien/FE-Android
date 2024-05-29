@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class    TrackListActivity extends AppCompatActivity {
+public class TrackListActivity extends AppCompatActivity {
     private RecyclerView rcvTrack;
     private TextView tvPlaylistName;
     private List<Track> mListTrack;
@@ -47,11 +47,12 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
     } else {
         Toast.makeText(this, "Invalid playlist ID", Toast.LENGTH_SHORT).show();
     }
-
-    trackAdapter.setOnItemClickListener(position -> {
-        Track selectedTrack = mListTrack.get(position);
-        int trackId = selectedTrack.getId();
-    });
+        trackAdapter.setOnItemClickListener(track -> {
+            Intent intent = new Intent(TrackListActivity.this, ListeningActivity.class);
+            intent.putExtra("track", track);
+            intent.putExtra("track_list", new ArrayList<>(mListTrack));
+            startActivity(intent);
+        });
 } 
 
     private void callApiGetTrackFromPlaylist(int playlistId) {

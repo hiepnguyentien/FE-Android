@@ -44,7 +44,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
         }
         holder.tv_playlist_item_name.setText(playlist.getPlaylistName());
         holder.tv_playlist_item_author.setText(playlist.getAuthorName());
-        String artworkUrl = "http://192.168.1.34:5271/track/artwork/" + playlist.getArtWork();
+        String artworkUrl = "http://192.168.1.9:5271/track/artwork/" + playlist.getArtWork();
         Glide.with(holder.itemView.getContext())
                 .load(artworkUrl)
                 .into(holder.iv_playlist_item_artwork);
