@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,14 +32,22 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView rcvTrack;
     private List<Track> mListTrack;
+    private ImageView iv_addT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
 
         rcvTrack = findViewById(R.id.rcv_track);
         mListTrack = new ArrayList<>();
+        iv_addT = findViewById(R.id.iv_addTrack);
+
+        iv_addT.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, UploadTrackActivity.class);
+            startActivity(intent);
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rcvTrack.setLayoutManager(layoutManager);
@@ -46,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 1) { // Tab thứ hai
+                if (tab.getPosition() == 1) {
                     startActivity(new Intent(MainActivity.this, PlaylistActivity.class));
                 } else if (tab.getPosition() == 3) {
                     if (isLoggedIn()) {
@@ -72,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("track_id", trackId);
         startActivity(intent);
     }
+
+    private void openListeningActivity(int trackId) {
+        Intent intent;
+        intent = new Intent(MainActivity.this, ListeningActivity.class);
+        intent.putExtra("track_id", trackId);
+        startActivity(intent);
 
     private boolean isLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

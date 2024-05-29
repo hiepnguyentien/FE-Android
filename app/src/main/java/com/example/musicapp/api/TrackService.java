@@ -1,6 +1,7 @@
 package com.example.musicapp.api;
 
 import com.example.musicapp.models.Track;
+import com.example.musicapp.models.UserResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -9,10 +10,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface TrackService {
 
@@ -22,12 +22,16 @@ public interface TrackService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     TrackService trackService = new Retrofit.Builder()
-            .baseUrl("http://192.168.84.83:5271/track/")
+            .baseUrl("http://192.168.1.34:5271/track/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(TrackService.class);
     @GET("all")
     Call<List<Track>> getListTrack();
+    @GET("{id}")
+    Call<Track> getTrackById(@Path("id") int id);
+    @POST("track")
+    Call<Track> addTrack(Track track);
     @GET("playlist/{playlistId}")
     Call<List<Track>> getTrackFromPlaylist(@Path("playlistId") int playlistId);
 }

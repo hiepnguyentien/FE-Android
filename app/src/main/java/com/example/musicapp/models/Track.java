@@ -1,10 +1,10 @@
 package com.example.musicapp.models;
 
-public class Track {
+import java.io.Serializable;
+
+public class Track implements Serializable {
     private String trackName;
     private int id;
-    private String author;
-    private String artWork;
 
     public int getId() {
         return id;
@@ -13,6 +13,38 @@ public class Track {
     public void setId(int id) {
         this.id = id;
     }
+
+    private String author;
+    private String artWork;
+    private String description;
+    private boolean isPrivate;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    private String fileName;
+
 
     public String getArtWork() {
         return artWork;
