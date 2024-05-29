@@ -36,7 +36,7 @@ public interface TrackService {
     @GET("{id}")
     Call<Track> getTrackById(@Path("id") int id);
     @POST("track")
-    Call<Track> addTrack(Track track);
+    Call<Track> addTrack(@Body Track track);
     @GET("playlist/{playlistId}")
     Call<List<Track>> getTrackFromPlaylist(@Path("playlistId") int playlistId);
 }

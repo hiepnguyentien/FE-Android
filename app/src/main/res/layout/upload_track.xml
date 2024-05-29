@@ -55,28 +55,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
-        <Button
-            android:id="@+id/upload_track"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
-            android:layout_marginEnd="56dp"
-            android:text="Select your track"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox_private" />
+    <Button
+        android:id="@+id/upload_track"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="56dp"
+        android:text="Select your track"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_private" />
 
-        <Button
-            android:id="@+id/select_aw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="102dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="56dp"
-            android:text="Select the artwork for your track"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/upload_track" />
+    <Button
+        android:id="@+id/select_aw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="10dp"
+        android:text="Select the artwork for your track"
+        app:layout_constraintBottom_toTopOf="@+id/btn_upload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_private" />
 
         <EditText
             android:id="@+id/edt_description"
@@ -123,11 +126,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="262dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="58dp"
+        android:layout_marginBottom="35dp"
         android:text="Upload"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_aw" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/audio_file_name"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/upload_track"
+            app:layout_constraintTop_toTopOf="@id/upload_track" />
+
+        <ImageView
+            android:id="@+id/artwork_image_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/select_aw"
+            app:layout_constraintTop_toTopOf="@id/select_aw" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
