@@ -110,8 +110,8 @@ public class UploadTrackActivity extends AppCompatActivity {
         track.setTrackName(trackName);
         track.setDescription(description);
         track.setPrivate(isPrivate);
-        track.setAudioFile(new File(selectedAudioPath));
-        track.setArtWork(new File(selectedImagePath));
+        track.setFileName(selectedAudioPath);
+        track.setArtWork(selectedImagePath);
 
         // Call your TrackService to upload the track
         TrackService trackService = TrackService.getInstance();
