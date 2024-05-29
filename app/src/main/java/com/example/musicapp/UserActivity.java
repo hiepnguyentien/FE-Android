@@ -86,14 +86,12 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        // Fetch user data
         fetchUserData();
     }
 
     private void fetchUserData() {
-        // Assume userId is stored in SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        int userId = sharedPreferences.getInt("userId", -1); // Adjust the key as needed
+        int userId = sharedPreferences.getInt("userId", -1);
 
         if (userId == -1) {
             Toast.makeText(this, "User ID not found", Toast.LENGTH_SHORT).show();

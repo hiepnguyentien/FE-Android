@@ -13,15 +13,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.musicapp.api.ApiClient;
 import com.example.musicapp.api.AuthService;
-import com.example.musicapp.api.UserService;
 import com.example.musicapp.models.AuthResponse;
 import com.example.musicapp.models.SignInModel;
-import com.example.musicapp.models.UserResponse;
 import com.example.musicapp.util.DialogUtil;
-
-import java.util.List;
 
 import app.rive.runtime.kotlin.RiveAnimationView;
 import retrofit2.Call;
@@ -84,9 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful() && authResponse != null && authResponse.isSucceed()) {
                         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt("userId", authResponse.getUserId());  // Save userId to SharedPreferences
                         if (cb_missme.isChecked()) {
                             editor.putString("token", authResponse.getData());
-                        }else {
+                        } else {
                             MyMusicApp.setAuthToken(authResponse.getData());
                         }
                         editor.apply();
