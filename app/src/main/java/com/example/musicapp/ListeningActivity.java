@@ -84,20 +84,7 @@ public class ListeningActivity extends AppCompatActivity {
     private int trackId;
     private EditText edt_addcmt;
 
-
-    private SeekBar songBar;
-    private MediaPlayer mediaPlayer;
-    private Handler handler = new Handler();
-    private Track track;
-    private TextView mName;
-    private ImageView ivArtwork, back, pause_play, skip;
-    private RecyclerView rcvComments;
-    private List<CommentResponse> commentList;
-    private int trackId;
-    private EditText edt_addcmt;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listening);

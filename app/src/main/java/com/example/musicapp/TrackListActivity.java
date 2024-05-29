@@ -35,7 +35,7 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
     rcvTrack = findViewById(R.id.rcv_tracklist);
     tvPlaylistName = findViewById(R.id.tv_tracklist_playlistname);
     mListTrack = new ArrayList<>();
-    trackAdapter = new TrackAdapter(mListTrack);
+    trackAdapter = new TrackAdapter(TrackListActivity.this, mListTrack);
     rcvTrack.setLayoutManager(new LinearLayoutManager(this));
     rcvTrack.setAdapter(trackAdapter);
 
@@ -51,7 +51,6 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
     trackAdapter.setOnItemClickListener(position -> {
         Track selectedTrack = mListTrack.get(position);
         int trackId = selectedTrack.getId();
-        openCommentActivity(trackId);
     });
 } 
 
@@ -73,11 +72,5 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
                 Toast.makeText(TrackListActivity.this, "Failed to connect", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void openCommentActivity(int trackId) {
-        Intent intent = new Intent(TrackListActivity.this, CommentActivity.class);
-        intent.putExtra("track_id", trackId);
-        startActivity(intent);
     }
 }
