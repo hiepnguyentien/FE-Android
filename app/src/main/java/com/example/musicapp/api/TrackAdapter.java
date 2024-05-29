@@ -54,7 +54,7 @@ public class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.TrackViewHol
         }
         holder.tv_track_name.setText(track.getTrackName());
         holder.tv_author.setText(track.getAuthor());
-        String artworkUrl = "http://192.168.1.34:5271/track/artwork/" + track.getArtWork();
+        String artworkUrl = "http://192.168.1.9:5271/track/artwork/" + track.getArtWork();
         Glide.with(holder.itemView.getContext())
                 .load(artworkUrl)
                 .into(holder.iv_artwork);

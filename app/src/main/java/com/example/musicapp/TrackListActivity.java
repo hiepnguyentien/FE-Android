@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class    TrackListActivity extends AppCompatActivity {
+public class TrackListActivity extends AppCompatActivity {
     private RecyclerView rcvTrack;
     private TextView tvPlaylistName;
     private List<Track> mListTrack;
@@ -35,7 +35,9 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
     rcvTrack = findViewById(R.id.rcv_tracklist);
     tvPlaylistName = findViewById(R.id.tv_tracklist_playlistname);
     mListTrack = new ArrayList<>();
-    trackAdapter = new TrackAdapter(TrackListActivity.this, mListTrack);
+
+    trackAdapter = new TrackAdapter(TrackListActivity.this,mListTrack);
+
     rcvTrack.setLayoutManager(new LinearLayoutManager(this));
     rcvTrack.setAdapter(trackAdapter);
 
@@ -48,11 +50,12 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
         Toast.makeText(this, "Invalid playlist ID", Toast.LENGTH_SHORT).show();
     }
 
-    trackAdapter.setOnItemClickListener(position -> {
-        Track selectedTrack = mListTrack.get(position);
-        int trackId = selectedTrack.getId();
-    });
-} 
+        trackAdapter.setOnItemClickListener(track -> {
+            Intent intent = new Intent(TrackListActivity.this, ListeningActivity.class);
+            intent.putExtra("track", track);
+            intent.putExtra("track_list", new ArrayList<>(mListTrack));
+            startActivity(intent);
+        });
 
     private void callApiGetTrackFromPlaylist(int playlistId) {
         TrackService.trackService.getTrackFromPlaylist(playlistId).enqueue(new Callback<List<Track>>() {

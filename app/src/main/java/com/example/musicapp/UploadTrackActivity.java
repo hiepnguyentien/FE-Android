@@ -1,14 +1,19 @@
 package com.example.musicapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +34,7 @@ public class UploadTrackActivity extends AppCompatActivity {
 
     private Uri selectedAudioUri;
     private Uri selectedImageUri;
+    private static final String DEFAULT_ARTWORK_URL = "http://192.168.1.34:5271/track/artwork/default-artwork.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +84,58 @@ public class UploadTrackActivity extends AppCompatActivity {
         if (requestCode == PICK_AUDIO_REQUEST_CODE && resultCode == RESULT_OK) {
             if (data != null) {
                 selectedAudioUri = data.getData();
+                String fileName = getFileName(selectedAudioUri);
+
+                if (fileName != null && fileName.contains(" ")) {
+                    Toast.makeText(this, "Please rename the file to remove spaces.", Toast.LENGTH_LONG).show();
+                } else {
+                    // Replace upload_track button with a TextView containing the file name
+                    Button uploadTrackButton = findViewById(R.id.upload_track);
+                    uploadTrackButton.setVisibility(View.GONE);
+                    TextView audioFileNameTextView = findViewById(R.id.audio_file_name);
+                    audioFileNameTextView.setVisibility(View.VISIBLE);
+                    audioFileNameTextView.setText(fileName);
+                }
             }
         }
         if (requestCode == PICK_IMAGE_REQUEST_CODE && resultCode == RESULT_OK) {
             if (data != null) {
                 selectedImageUri = data.getData();
+                String fileName = getFileName(selectedImageUri);
+
+                if (fileName != null && fileName.contains(" ")) {
+                    Toast.makeText(this, "Please rename the image file to remove spaces.", Toast.LENGTH_LONG).show();
+                } else {
+                    // Replace select_aw button with a small ImageView containing the selected image
+                    Button selectArtworkButton = findViewById(R.id.select_aw);
+                    selectArtworkButton.setVisibility(View.GONE);
+                    ImageView artworkImageView = findViewById(R.id.artwork_image_view);
+                    artworkImageView.setVisibility(View.VISIBLE);
+                    artworkImageView.setImageURI(selectedImageUri);
+                }
             }
         }
+    }
+
+    @SuppressLint("Range")
+    private String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
+        }
+        if (result == null) {
+            result = uri.getLastPathSegment();
+        }
+        return result;
     }
 
     private void uploadTrack() {
@@ -97,13 +148,14 @@ public class UploadTrackActivity extends AppCompatActivity {
         CheckBox privateCheckBox = findViewById(R.id.checkbox_private);
         boolean isPrivate = privateCheckBox.isChecked();
 
-        if (selectedAudioUri == null || selectedImageUri == null) {
-            // Handle if audio or image is not selected
+        if (selectedAudioUri == null) {
+            // Handle if audio is not selected
+            Toast.makeText(this, "Please select an audio file.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         String selectedAudioPath = getRealPathFromURI(selectedAudioUri);
-        String selectedImagePath = getRealPathFromURI(selectedImageUri);
+        String selectedImagePath = selectedImageUri != null ? getRealPathFromURI(selectedImageUri) : DEFAULT_ARTWORK_URL;
 
         // Create a Track object with all the necessary information
         Track track = new Track();
@@ -122,9 +174,11 @@ public class UploadTrackActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     // Track uploaded successfully
                     // Handle success response
+                    Toast.makeText(UploadTrackActivity.this, "Track uploaded successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     // Track upload failed
                     // Handle error response
+                    Toast.makeText(UploadTrackActivity.this, "Track upload failed", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -132,6 +186,7 @@ public class UploadTrackActivity extends AppCompatActivity {
             public void onFailure(Call<Track> call, Throwable t) {
                 // Track upload failed due to network error or other reasons
                 // Handle failure
+                Toast.makeText(UploadTrackActivity.this, "Track upload failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
