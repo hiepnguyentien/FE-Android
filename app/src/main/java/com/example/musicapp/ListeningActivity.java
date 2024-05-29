@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -15,7 +19,37 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import android.os.Handler;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.example.musicapp.api.ApiClient;
+import com.example.musicapp.api.CmtAdapter;
+import com.example.musicapp.api.CommentService;
+import com.example.musicapp.api.TrackService;
+import com.example.musicapp.models.CommentResponse;
+import com.example.musicapp.models.Track;
+import com.example.musicapp.util.DialogUtil;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +84,20 @@ public class ListeningActivity extends AppCompatActivity {
     private int trackId;
     private EditText edt_addcmt;
 
+
+    private SeekBar songBar;
+    private MediaPlayer mediaPlayer;
+    private Handler handler = new Handler();
+    private Track track;
+    private TextView mName;
+    private ImageView ivArtwork, back, pause_play, skip;
+    private RecyclerView rcvComments;
+    private List<CommentResponse> commentList;
+    private int trackId;
+    private EditText edt_addcmt;
+
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listening);

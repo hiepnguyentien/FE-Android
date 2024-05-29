@@ -1,6 +1,7 @@
 package com.example.musicapp.api;
 
 import com.example.musicapp.models.Track;
+import com.example.musicapp.models.UserResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -32,10 +33,10 @@ public interface TrackService {
 
     @GET("all")
     Call<List<Track>> getListTrack();
-
     @GET("{id}")
     Call<Track> getTrackById(@Path("id") int id);
-
     @POST("track")
-    Call<Track> addTrack(@Body Track track);
+    Call<Track> addTrack(Track track);
+    @GET("playlist/{playlistId}")
+    Call<List<Track>> getTrackFromPlaylist(@Path("playlistId") int playlistId);
 }

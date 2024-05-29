@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 3) {
+                if (tab.getPosition() == 1) {
+                    startActivity(new Intent(MainActivity.this, PlaylistActivity.class));
+                } else if (tab.getPosition() == 3) {
                     if (isLoggedIn()) {
                         startActivity(new Intent(MainActivity.this, UserActivity.class));
                     } else {
@@ -64,11 +66,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
+
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
+
     }
 
     private void openListeningActivity(int trackId) {
@@ -77,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("track_id", trackId);
         startActivity(intent);
     }
+
+    private void openListeningActivity(int trackId) {
+        Intent intent;
+        intent = new Intent(MainActivity.this, ListeningActivity.class);
+        intent.putExtra("track_id", trackId);
+        startActivity(intent);
 
     private boolean isLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
