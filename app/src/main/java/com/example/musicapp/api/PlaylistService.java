@@ -20,7 +20,7 @@ public interface PlaylistService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     PlaylistService playlistService = new Retrofit.Builder()
-            .baseUrl("http://192.168.84.83:5271/playlist/")
+            .baseUrl("http://192.168.1.9:5271/playlist/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(PlaylistService.class);

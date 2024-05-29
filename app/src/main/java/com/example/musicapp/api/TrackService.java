@@ -22,7 +22,7 @@ public interface TrackService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     TrackService trackService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.34:5271/track/")
+            .baseUrl("http://192.168.1.9:5271/track/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(TrackService.class);

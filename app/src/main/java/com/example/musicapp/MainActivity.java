@@ -83,12 +83,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void openListeningActivity(int trackId) {
-        Intent intent;
-        intent = new Intent(MainActivity.this, ListeningActivity.class);
-        intent.putExtra("track_id", trackId);
-        startActivity(intent);
-
     private boolean isLoggedIn() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String token = sharedPreferences.getString("token", null);
@@ -98,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-
     private void callApiGetTrack(){
         TrackService.trackService.getListTrack().enqueue(new Callback<List<Track>>() {
             @Override
