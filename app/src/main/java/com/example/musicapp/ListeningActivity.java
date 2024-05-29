@@ -55,8 +55,6 @@ public class ListeningActivity extends AppCompatActivity {
     private EditText edt_addcmt;
     private List<Track> trackList;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
