@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 3) {
+                if (tab.getPosition() == 1) { // Tab thứ hai
+                    startActivity(new Intent(MainActivity.this, PlaylistActivity.class));
+                } else if (tab.getPosition() == 3) {
                     if (isLoggedIn()) {
                         startActivity(new Intent(MainActivity.this, UserActivity.class));
                     } else {
@@ -54,11 +56,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
+
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
+
     }
 
     private void openCommentActivity(int trackId) {

@@ -42,8 +42,10 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".CommentActivity" />
         <activity android:name=".UserActivity" />
-        <activity android:name="ListeningActivity" />
+        <activity android:name=".ListeningActivity" />
         <activity android:name=".ResetPWActivity" />
+        <activity android:name=".PlaylistActivity"/>
+        <activity android:name=".TrackListActivity"/>
     </application>
 
 </manifest>

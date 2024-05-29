@@ -3,6 +3,8 @@ package com.example.musicapp.models;
 public class Track {
     private String trackName;
     private int id;
+    private String author;
+    private String artWork;
 
     public int getId() {
         return id;
@@ -11,10 +13,6 @@ public class Track {
     public void setId(int id) {
         this.id = id;
     }
-
-    private String author;
-    private String artWork;
-
 
     public String getArtWork() {
         return artWork;
