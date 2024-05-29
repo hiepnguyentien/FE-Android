@@ -53,6 +53,8 @@ public class ListeningActivity extends AppCompatActivity {
     private List<CommentResponse> commentList;
     private int trackId;
     private EditText edt_addcmt;
+    private List<Track> trackList;
+
 
 
     @Override
@@ -62,7 +64,7 @@ public class ListeningActivity extends AppCompatActivity {
 
         songBar = findViewById(R.id.songBar);
         mName = findViewById(R.id.mName);
-        ivArtwork = findViewById(R.id.iv_artwork);
+        ivArtwork = findViewById(R.id.iv_listening_artwork);
         back = findViewById(R.id.backLis);
         pause_play = findViewById(R.id.pause_play);
         skip = findViewById(R.id.next);

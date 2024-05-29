@@ -30,7 +30,7 @@
         app:srcCompat="@drawable/baseline_arrow_back_24" />
 
     <ImageView
-        android:id="@+id/iv_artwork"
+        android:id="@+id/iv_listening_artwork"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="137dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_artwork" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_listening_artwork" />
 
     <SeekBar
         android:id="@+id/songBar"
